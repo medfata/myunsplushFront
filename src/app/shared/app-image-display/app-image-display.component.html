@@ -1,0 +1,7 @@
+ <div class="card position-relative" id="imageContainer" [style.height.px]="index && index % 2 == 0 ? '400':'250'"
+   (mouseover)="onHover(img, btn, p)" (mouseout)="onOut(img, btn, p)" >
+  <img [src]="backgroundUrl" class="card-img" style="height: 100%;"     [alt]="imageLabel" #img  >
+  <button id="deleteImage" class="btn btn-outline-danger position-absolute m-2"
+   style="top: 0; right: 0; display: none;" #btn (click)="onDeleteImage(id)" >delete</button>
+  <p class="text-white font-weight-bold position-absolute m-2" style="bottom:0; left:0; display: none;" #p>{{imageLabel}}</p>
+ </div>

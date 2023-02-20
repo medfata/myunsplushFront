@@ -1,0 +1,23 @@
+  <div class="modal-header">
+    <h4 class="modal-title">Add a new Photo :</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activatedModal.dismiss()" >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+     <form #deletingForm="ngForm" novalidate>
+      <div class="form-group">
+        <label for="password">Image label :</label>
+        <input type="text" class="form-control" id="password" name="password"  ngModel required>
+      </div>
+     </form>
+     <div class="text-danger" *ngIf="isError">
+        - {{Error}}
+     </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activatedModal.close()" >Cancel</button>
+    <button type="submit" class="btn btn-danger" [disabled]="!deletingForm.form.valid || isDeleting"
+    (click)="deleteImage(deletingForm)"
+    ><i *ngIf="isDeleting" class="fa fa-circle-o-notch fa-spin"></i> Delete</button>
+  </div>

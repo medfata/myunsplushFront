@@ -1,0 +1,28 @@
+  <div class="modal-header">
+    <h4 class="modal-title">Add a new Photo :</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body ">
+    <form #imageForm="ngForm" novalidate >
+      <div *ngIf="isSaving == false">
+        <div class="form-group">
+          <label for="label">label :</label>
+          <input type="text" class="form-control" id="label" ngModel name="label" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="fileUrl">image Url :</label>
+          <input type="text" class="form-control" id="fileUrl" ngModel name="imageUrl" required>
+        </div>
+      </div>
+      <div *ngIf="isSaving" class="d-flex justify-content-center" ><i  class="fa fa-circle-o-notch fa-spin fa-5x"></i></div>
+      <p *ngIf="isError" class="text-danger">Error while uploading Image !</p>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancel</button>
+    <button type="submit" class="btn btn-success" [disabled]="!imageForm.form.valid || isSaving"
+      (click)="saveImage(imageForm)">
+      <i *ngIf="isSaving" class="fa fa-circle-o-notch fa-spin"></i>Submit</button>
+  </div>
